@@ -43,3 +43,10 @@ func (s *Stack[T]) Peek() T {
 
 	return copy[len(copy)-1]
 }
+
+// Size
+//
+//	Returns the number of elements of the stack
+func (s *Stack[T]) Size() int {
+	return len(*s)
+}

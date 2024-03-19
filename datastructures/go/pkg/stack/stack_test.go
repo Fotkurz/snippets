@@ -114,3 +114,32 @@ func TestPeek(t *testing.T) {
 		})
 	}
 }
+
+func TestSize(t *testing.T) {
+	tests := []struct {
+		name string
+		init stack.Stack[int32]
+		exp  int
+	}{
+		{
+			"should return the value 5",
+			[]int32{2, 4, 6, 8, 10},
+			5,
+		},
+		{
+			"should return 0 if stack is empty",
+			[]int32{},
+			0,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			res := tt.init.Size()
+
+			if res != tt.exp {
+				t.Errorf("Expected=%d, got=%d", tt.exp, res)
+			}
+		})
+	}
+}
