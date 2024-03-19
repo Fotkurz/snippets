@@ -30,3 +30,23 @@ func (s *Stack[T]) IsEmpty() bool {
 func (s *Stack[T]) Add(value T) {
 	*s = append(*s, value)
 }
+
+// Peek
+//
+//	Returns a copy of the top element of the stack
+//	or a empty value if stack empty.
+func (s *Stack[T]) Peek() T {
+	copy := *s
+	if len(copy)-1 < 0 {
+		return *new(T)
+	}
+
+	return copy[len(copy)-1]
+}
+
+// Size
+//
+//	Returns the number of elements of the stack
+func (s *Stack[T]) Size() int {
+	return len(*s)
+}
