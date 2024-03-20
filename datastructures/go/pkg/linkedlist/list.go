@@ -1,13 +1,15 @@
 package linkedlist
 
+import "fmt"
+
 type LinkedList[T any] struct {
 	head *Node[T]
 }
 
-func NewLinkedList[T any](data T) *LinkedList[T] {
+func NewLinkedList[T any](headData T) *LinkedList[T] {
 	return &LinkedList[T]{
 		head: &Node[T]{
-			data: data,
+			data: headData,
 			next: nil,
 		},
 	}
@@ -21,7 +23,7 @@ func (l *LinkedList[T]) Add(new T) *Node[T] {
 		data: new,
 		next: nil,
 	}
-	// TODO: Not properly working i guess
+
 	if l.head.next == nil {
 		l.head.next = n
 	} else {
@@ -38,7 +40,7 @@ func (l *LinkedList[T]) Add(new T) *Node[T] {
 		}
 
 	}
-
+	fmt.Println(&n)
 	return n
 }
 
