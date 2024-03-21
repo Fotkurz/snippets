@@ -1,7 +1,6 @@
 package linkedlist_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/Fotkurz/datastructures/go/stack/pkg/linkedlist"
@@ -12,24 +11,27 @@ func TestAdd(t *testing.T) {
 	l := linkedlist.NewLinkedList(headData)
 
 	l.Add(16)
-	thirdNode := l.Add(18)
+	third := l.Add(17)
+	fourth := l.Add(18)
 
 	headNode := l.Head()
-	last := headNode.Next().Next()
-
-	fmt.Println(&last)
-	fmt.Println(&thirdNode)
+	thirdNode := headNode.Next().Next()
+	fourthNode := thirdNode.Next()
 
 	if headNode.Data() != headData {
 		t.Errorf("Expected=%d, got=%d", headData, headNode.Data())
 	}
 
-	if thirdNode.Data() != last.Data() {
-		t.Errorf("Expected=%d, got=%d", last.Data(), thirdNode.Data())
+	if third.Data() != thirdNode.Data() {
+		t.Errorf("Expected=%d, got=%d", thirdNode.Data(), third.Data())
 	}
 
-	if &thirdNode != &last {
-		t.Errorf("Expected=%d, got=%d", &last, &thirdNode)
+	if third != thirdNode {
+		t.Errorf("Expected=%p, got=%p", thirdNode, third)
+	}
+
+	if fourth != fourthNode {
+		t.Errorf("Expected=%p, got=%p", fourthNode, fourth)
 	}
 
 }
