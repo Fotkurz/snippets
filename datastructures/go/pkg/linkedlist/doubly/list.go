@@ -1,18 +1,18 @@
 package doubly
 
 type DoublyLinkedList[T any] struct {
-	head *Node[T]
+	head *node[T]
 }
 
 func NewDoublyLinkedList[T any](headData T) *DoublyLinkedList[T] {
 	return &DoublyLinkedList[T]{
-		head: &Node[T]{
+		head: &node[T]{
 			data: headData,
 			next: nil,
 		},
 	}
 }
 
-func (l *DoublyLinkedList[T]) Head() *Node[T] {
+func (l *DoublyLinkedList[T]) Head() *node[T] {
 	return l.head
 }

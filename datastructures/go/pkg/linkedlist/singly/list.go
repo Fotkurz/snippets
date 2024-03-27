@@ -5,12 +5,12 @@ import (
 )
 
 type LinkedList[T any] struct {
-	head *Node[T]
+	head *node[T]
 }
 
 func NewLinkedList[T any](headData T) *LinkedList[T] {
 	return &LinkedList[T]{
-		head: &Node[T]{
+		head: &node[T]{
 			data: headData,
 			next: nil,
 		},
@@ -20,8 +20,8 @@ func NewLinkedList[T any](headData T) *LinkedList[T] {
 // Add
 //
 //	Adds a new value to the end of the list
-func (l *LinkedList[T]) Add(new T) *Node[T] {
-	n := Node[T]{
+func (l *LinkedList[T]) Add(new T) *node[T] {
+	n := node[T]{
 		data: new,
 		next: nil,
 	}
@@ -49,7 +49,7 @@ func (l *LinkedList[T]) Add(new T) *Node[T] {
 // Head
 //
 //	Returns the head node from the list
-func (l *LinkedList[T]) Head() *Node[T] {
+func (l *LinkedList[T]) Head() *node[T] {
 	return l.head
 }
 
@@ -75,7 +75,7 @@ func (l *LinkedList[T]) Length() int {
 // Delete
 //
 //	Removes an element from the linked-list by index
-func (l *LinkedList[T]) Delete(i int) *Node[T] {
+func (l *LinkedList[T]) Delete(i int) *node[T] {
 	if i > l.Length()-1 || i < 0 {
 		log.Panicf("index out of bounds [%d]", i)
 	}
