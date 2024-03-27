@@ -1,14 +1,14 @@
-package linkedlist_test
+package singly_test
 
 import (
 	"testing"
 
-	"github.com/Fotkurz/datastructures/go/stack/pkg/linkedlist"
+	"github.com/Fotkurz/datastructures/go/stack/pkg/linkedlist/singly"
 )
 
 func TestAdd(t *testing.T) {
 	headData := 12
-	l := linkedlist.NewLinkedList(headData)
+	l := singly.NewLinkedList(headData)
 
 	l.Add(16)
 	third := l.Add(17)
@@ -39,7 +39,7 @@ func TestAdd(t *testing.T) {
 func TestLength(t *testing.T) {
 
 	t.Run("with 3 nodes should have length 3", func(t *testing.T) {
-		l := linkedlist.NewLinkedList(1)
+		l := singly.NewLinkedList(1)
 		l.Add(2)
 		l.Add(3)
 
@@ -52,7 +52,7 @@ func TestLength(t *testing.T) {
 	})
 
 	t.Run("with only head should have length 1", func(t *testing.T) {
-		l := linkedlist.NewLinkedList(4)
+		l := singly.NewLinkedList(4)
 
 		want := 1
 		got := l.Length()
@@ -65,7 +65,7 @@ func TestLength(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 	t.Run("should delete the head element", func(t *testing.T) {
-		l := linkedlist.NewLinkedList(4)
+		l := singly.NewLinkedList(4)
 		l.Add(5)
 		l.Add(6)
 
@@ -85,7 +85,7 @@ func TestDelete(t *testing.T) {
 	})
 
 	t.Run("should delete the indexed element", func(t *testing.T) {
-		l := linkedlist.NewLinkedList(4)
+		l := singly.NewLinkedList(4)
 		l.Add(5)
 		l.Add(6)
 
@@ -105,7 +105,7 @@ func TestDelete(t *testing.T) {
 	})
 
 	t.Run("should delete the last element", func(t *testing.T) {
-		l := linkedlist.NewLinkedList(4)
+		l := singly.NewLinkedList(4)
 		l.Add(5)
 		l.Add(6)
 
@@ -125,7 +125,7 @@ func TestDelete(t *testing.T) {
 	})
 
 	t.Run("should panic if index is out of bounds", func(t *testing.T) {
-		l := linkedlist.NewLinkedList(4)
+		l := singly.NewLinkedList(4)
 
 		defer func() {
 			if r := recover(); r == nil {

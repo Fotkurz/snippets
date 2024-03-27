@@ -1,4 +1,4 @@
-package linkedlist
+package singly
 
 type Node[T any] struct {
 	data T
