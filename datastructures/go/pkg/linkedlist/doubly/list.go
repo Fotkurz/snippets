@@ -14,34 +14,47 @@ func NewDoublyLinkedList[T any](data T) *DoublyLinkedList[T] {
 	}
 }
 
+// Head
+//
+//	Returns the head (first) node of the list
 func (l *DoublyLinkedList[T]) Head() *node[T] {
 	return l.head
 }
 
-func (l *DoublyLinkedList[T]) AddNext(new T) *node[T] {
-	n := node[T]{
-		previous: nil,
+// AddNext
+//
+//	Insert a new node between the actual and its next node. Returns the new inserted node.
+func (l *DoublyLinkedList[T]) AddNext(actual *node[T], new T) *node[T] {
+	next := actual.next
+	n := &node[T]{
 		data:     new,
-		next:     nil,
+		previous: actual,
+		next:     next,
 	}
 
-	if l.head.next == nil {
-		n.previous = l.head
-		l.head.next = &n
-	} else {
-		node := l.head.next
+	actual.next = n
 
-		hasNext := true
-		for hasNext {
-			if node.next == nil {
-				n.previous = node
-				node.next = &n
-				hasNext = false
-			} else {
-				node = node.next
-			}
-		}
+	return n
+}
+
+// AddPrevious
+//
+//	Insert a new node between the actual and its previous node. Returns the new inserted node.
+func (l *DoublyLinkedList[T]) AddPrevious(actual *node[T], new T) *node[T] {
+	previous := actual.previous
+
+	n := &node[T]{
+		data:     new,
+		next:     actual,
+		previous: previous,
 	}
 
-	return &n
+	actual.previous = n
+
+	// replaces list head for the new node
+	if previous == nil {
+		l.head = n
+	}
+
+	return n
 }
