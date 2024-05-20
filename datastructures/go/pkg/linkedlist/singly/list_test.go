@@ -64,6 +64,7 @@ func TestLength(t *testing.T) {
 }
 
 func TestDelete(t *testing.T) {
+
 	t.Run("should delete the head element", func(t *testing.T) {
 		l := singly.NewLinkedList(4)
 		l.Add(5)
