@@ -16,3 +16,7 @@ func (n *node[T]) Previous() *node[T] {
 func (n *node[T]) Next() *node[T] {
 	return n.next
 }
+
+func (n *node[T]) HasNext() bool {
+	return n.next != nil
+}

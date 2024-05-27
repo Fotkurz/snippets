@@ -90,3 +90,37 @@ func TestAddPrevious(t *testing.T) {
 		}
 	})
 }
+
+func TestPush(t *testing.T) {
+
+	list := doubly.NewDoublyLinkedList(1)
+	list.Push(2)
+	list.Push(3)
+
+	head := list.Head()
+
+	if head.Next().Data() != 2 {
+		t.Errorf("want != got, want=%d, got=%d", 2, head.Next().Data())
+	}
+	if head.Next().Next().Data() != 3 {
+		t.Errorf("want != got, want=%d, got=%d", 3, head.Next().Next().Data())
+	}
+}
+
+func TestPop(t *testing.T) {
+	list := doubly.NewDoublyLinkedList(1)
+	list.Push(2)
+	list.Push(3)
+
+	list.Pop()
+	head := list.Head()
+	if head.Next().Next() != nil {
+		t.Errorf("want != got, want=%s, got=%p", "nil", head.Next().Next())
+	}
+
+	list.Pop()
+	if head.Next() != nil {
+		t.Errorf("want != got, want=%s, got=%p", "nil", head.Next())
+	}
+
+}
