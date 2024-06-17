@@ -23,6 +23,6 @@ There is also the Doubly Linked-list where each **Node** has the reference of th
 
 ### Disadvantages
 
-- Uses more memory than arrays, since each element, in a single linked list, is made of 2 nodes.
-- Traversal is harder in linked-list than in arrays and direct access to an element is not possible.
+- Uses more memory than arrays, since each element, in a single linked list, is made of 1 node and one ref and in a doubly linked list, each element is made of 2 refs and 1 node.
+- Traversal is harder in linked-list than in arrays and direct access to an element is not possible, so it requires iteration to find elements in correct position.
 - Search and iteration operations are more expensive than in arrays.
