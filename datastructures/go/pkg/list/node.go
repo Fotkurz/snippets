@@ -3,6 +3,7 @@ package list
 type doublyNode[T any] struct {
 	data           T
 	previous, next *doublyNode[T]
+	list           *Doubly[T]
 }
 
 func (n *doublyNode[T]) Data() T {
@@ -19,6 +20,10 @@ func (n *doublyNode[T]) Next() *doublyNode[T] {
 
 func (n *doublyNode[T]) HasNext() bool {
 	return n.next != nil
+}
+
+func (n *doublyNode[T]) List() *Doubly[T] {
+	return n.list
 }
 
 type node[T any] struct {

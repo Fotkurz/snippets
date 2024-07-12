@@ -5,13 +5,16 @@ type Doubly[T any] struct {
 }
 
 func NewDoubly[T any](data T) *Doubly[T] {
-	return &Doubly[T]{
-		head: &doublyNode[T]{
-			data:     data,
-			next:     nil,
-			previous: nil,
-		},
+	l := &Doubly[T]{}
+
+	l.head = &doublyNode[T]{
+		list:     l,
+		data:     data,
+		next:     nil,
+		previous: nil,
 	}
+
+	return l
 }
 
 // Head returns the head (first) node of the list
@@ -22,11 +25,16 @@ func (l *Doubly[T]) Head() *doublyNode[T] {
 // AddNext inserts a new node between the actual and its next node.
 // Returns the new inserted node.
 func (l *Doubly[T]) AddNext(actual *doublyNode[T], new T) *doublyNode[T] {
+	if actual.List() != l {
+		return nil
+	}
 	next := actual.next
+
 	n := &doublyNode[T]{
 		data:     new,
 		previous: actual,
 		next:     next,
+		list:     l,
 	}
 
 	actual.next = n
@@ -37,12 +45,16 @@ func (l *Doubly[T]) AddNext(actual *doublyNode[T], new T) *doublyNode[T] {
 // AddPrevious inserts a new node between the actual and its previous node.
 // Returns the new inserted node.
 func (l *Doubly[T]) AddPrevious(actual *doublyNode[T], new T) *doublyNode[T] {
-	previous := actual.previous
+	if actual.List() != l {
+		return nil
+	}
 
+	previous := actual.previous
 	n := &doublyNode[T]{
 		data:     new,
 		next:     actual,
 		previous: previous,
+		list:     l,
 	}
 
 	actual.previous = n
