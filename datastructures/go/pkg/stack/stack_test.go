@@ -3,7 +3,7 @@ package stack_test
 import (
 	"testing"
 
-	"github.com/Fotkurz/datastructures/go/stack/pkg/stack"
+	"github.com/Fotkurz/snippets/datastructures/go/pkg/stack"
 )
 
 func TestPop(t *testing.T) {

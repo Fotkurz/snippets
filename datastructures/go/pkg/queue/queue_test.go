@@ -3,7 +3,7 @@ package queue_test
 import (
 	"testing"
 
-	"github.com/Fotkurz/datastructures/go/stack/pkg/queue"
+	"github.com/Fotkurz/snippets/datastructures/go/pkg/queue"
 )
 
 func TestIsEmpty(t *testing.T) {
