@@ -1,15 +1,15 @@
-package doubly_test
+package list_test
 
 import (
 	"testing"
 
-	"github.com/Fotkurz/datastructures/go/stack/pkg/linkedlist/doubly"
+	"github.com/Fotkurz/snippets/datastructures/go/pkg/list"
 )
 
 func TestAddNext(t *testing.T) {
 
 	t.Run("add 1 node", func(t *testing.T) {
-		list := doubly.NewDoublyLinkedList(1)
+		list := list.NewDoubly(1)
 
 		expectedPrevious := list.Head()
 
@@ -27,7 +27,7 @@ func TestAddNext(t *testing.T) {
 	})
 
 	t.Run("add 2 nodes", func(t *testing.T) {
-		list := doubly.NewDoublyLinkedList(1)
+		list := list.NewDoubly(1)
 
 		second := list.AddNext(list.Head(), 2)
 		third := list.AddNext(second, 3)
@@ -48,7 +48,7 @@ func TestAddNext(t *testing.T) {
 func TestAddPrevious(t *testing.T) {
 
 	t.Run("add 1 node", func(t *testing.T) {
-		list := doubly.NewDoublyLinkedList(5)
+		list := list.NewDoubly(5)
 
 		expectedNext := list.Head()
 
@@ -69,7 +69,7 @@ func TestAddPrevious(t *testing.T) {
 	})
 
 	t.Run("add 2 nodes and replace head", func(t *testing.T) {
-		list := doubly.NewDoublyLinkedList(3)
+		list := list.NewDoubly(3)
 
 		expectedNext := list.Head()
 
@@ -93,7 +93,7 @@ func TestAddPrevious(t *testing.T) {
 
 func TestPush(t *testing.T) {
 
-	list := doubly.NewDoublyLinkedList(1)
+	list := list.NewDoubly(1)
 	list.Push(2)
 	list.Push(3)
 
@@ -108,7 +108,7 @@ func TestPush(t *testing.T) {
 }
 
 func TestPop(t *testing.T) {
-	list := doubly.NewDoublyLinkedList(1)
+	list := list.NewDoubly(1)
 	list.Push(2)
 	list.Push(3)
 

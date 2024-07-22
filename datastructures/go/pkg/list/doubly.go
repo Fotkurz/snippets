@@ -1,32 +1,40 @@
-package doubly
+package list
 
-type DoublyLinkedList[T any] struct {
-	head *node[T]
+type Doubly[T any] struct {
+	head *doublyNode[T]
 }
 
-func NewDoublyLinkedList[T any](data T) *DoublyLinkedList[T] {
-	return &DoublyLinkedList[T]{
-		head: &node[T]{
-			data:     data,
-			next:     nil,
-			previous: nil,
-		},
+func NewDoubly[T any](data T) *Doubly[T] {
+	l := &Doubly[T]{}
+
+	l.head = &doublyNode[T]{
+		list:     l,
+		data:     data,
+		next:     nil,
+		previous: nil,
 	}
+
+	return l
 }
 
 // Head returns the head (first) node of the list
-func (l *DoublyLinkedList[T]) Head() *node[T] {
+func (l *Doubly[T]) Head() *doublyNode[T] {
 	return l.head
 }
 
 // AddNext inserts a new node between the actual and its next node.
 // Returns the new inserted node.
-func (l *DoublyLinkedList[T]) AddNext(actual *node[T], new T) *node[T] {
+func (l *Doubly[T]) AddNext(actual *doublyNode[T], new T) *doublyNode[T] {
+	if actual.List() != l {
+		return nil
+	}
 	next := actual.next
-	n := &node[T]{
+
+	n := &doublyNode[T]{
 		data:     new,
 		previous: actual,
 		next:     next,
+		list:     l,
 	}
 
 	actual.next = n
@@ -36,13 +44,17 @@ func (l *DoublyLinkedList[T]) AddNext(actual *node[T], new T) *node[T] {
 
 // AddPrevious inserts a new node between the actual and its previous node.
 // Returns the new inserted node.
-func (l *DoublyLinkedList[T]) AddPrevious(actual *node[T], new T) *node[T] {
-	previous := actual.previous
+func (l *Doubly[T]) AddPrevious(actual *doublyNode[T], new T) *doublyNode[T] {
+	if actual.List() != l {
+		return nil
+	}
 
-	n := &node[T]{
+	previous := actual.previous
+	n := &doublyNode[T]{
 		data:     new,
 		next:     actual,
 		previous: previous,
+		list:     l,
 	}
 
 	actual.previous = n
@@ -56,8 +68,8 @@ func (l *DoublyLinkedList[T]) AddPrevious(actual *node[T], new T) *node[T] {
 }
 
 // Push adds a new node to the end of the list and returns it.
-func (l *DoublyLinkedList[T]) Push(data T) *node[T] {
-	n := &node[T]{
+func (l *Doubly[T]) Push(data T) *doublyNode[T] {
+	n := &doublyNode[T]{
 		data:     data,
 		previous: nil,
 		next:     nil,
@@ -81,7 +93,7 @@ func (l *DoublyLinkedList[T]) Push(data T) *node[T] {
 
 // Pop removes the last item of the list and returns it.
 // If the list has only head node
-func (l *DoublyLinkedList[T]) Pop() *node[T] {
+func (l *Doubly[T]) Pop() *doublyNode[T] {
 	n := l.head
 	node := l.head
 

@@ -1,15 +1,15 @@
-package singly
+package list
 
 import (
 	"log"
 )
 
-type LinkedList[T any] struct {
+type Singly[T any] struct {
 	head *node[T]
 }
 
-func NewLinkedList[T any](data T) *LinkedList[T] {
-	return &LinkedList[T]{
+func NewSingly[T any](data T) *Singly[T] {
+	return &Singly[T]{
 		head: &node[T]{
 			data: data,
 			next: nil,
@@ -20,7 +20,7 @@ func NewLinkedList[T any](data T) *LinkedList[T] {
 // Add
 //
 //	Adds a new value to the end of the list and return its node.
-func (l *LinkedList[T]) Add(new T) *node[T] {
+func (l *Singly[T]) Add(new T) *node[T] {
 	n := node[T]{
 		data: new,
 		next: nil,
@@ -49,14 +49,14 @@ func (l *LinkedList[T]) Add(new T) *node[T] {
 // Head
 //
 //	Returns the head node from the list
-func (l *LinkedList[T]) Head() *node[T] {
+func (l *Singly[T]) Head() *node[T] {
 	return l.head
 }
 
 // Length
 //
 //	Returns the count of items of the list
-func (l *LinkedList[T]) Length() int {
+func (l *Singly[T]) Length() int {
 	node := l.Head()
 	count := int(1)
 
@@ -75,7 +75,7 @@ func (l *LinkedList[T]) Length() int {
 // Delete
 //
 //	Removes an element from the list by index
-func (l *LinkedList[T]) Delete(i int) *node[T] {
+func (l *Singly[T]) Delete(i int) *node[T] {
 	if i > l.Length()-1 || i < 0 {
 		log.Panicf("index out of bounds [%d]", i)
 	}

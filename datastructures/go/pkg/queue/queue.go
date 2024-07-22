@@ -12,13 +12,13 @@ func (q *Queue[T]) Size() int {
 	return len(*q)
 }
 
-// Push adds a new value to the end of the queue
-func (q *Queue[T]) Push(value T) {
+// Enqueue adds a new value to the end of the queue
+func (q *Queue[T]) Enqueue(value T) {
 	*q = append(*q, value)
 }
 
-// Pop removes the last element of the queue and returns it
-func (q *Queue[T]) Pop() T {
+// Dequeue removes the last element of the queue and returns it
+func (q *Queue[T]) Dequeue() T {
 	length := len(*q)
 	if q.Size() == 0 {
 		return *new(T)
@@ -29,8 +29,8 @@ func (q *Queue[T]) Pop() T {
 	return last
 }
 
-// Front returns the first element of the queue
-func (q *Queue[T]) Front() *T {
+// Peek shows the first element of the queue
+func (q *Queue[T]) Peek() *T {
 	if q.Size() == 0 {
 		return nil
 	}

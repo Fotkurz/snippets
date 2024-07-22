@@ -1,3 +1,3 @@
-module github.com/Fotkurz/datastructures/go/stack
+module github.com/Fotkurz/snippets/datastructures/go
 
 go 1.22

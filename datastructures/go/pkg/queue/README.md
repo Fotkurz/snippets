@@ -10,9 +10,10 @@ Queues are usually used today in event drive architectures to asynchronous proce
 Some of te core methods of queues are:
 
 - IsEmpty() -> Checks if queue is empty
-- Peek() -> Returns the first element of the queue (the next to be processed).
-- Enqueue() -> Inserts new element into the queue.
-- Dequeue() -> Remove the oldest element from queue.
+- Front() -> Returns the first element of the queue (the next to be processed).
+- Back() -> Returns the last element of the queue.
+- Dequeue() -> Remove the las telement of the queue.
+- Enqueue() -> Add a new element to the queue.
 
 Some implementations of the Queue with DoublyLinked Lists, can achieve
 Dequeue and Enqueue time complexity of O(1). (We should try this here).
