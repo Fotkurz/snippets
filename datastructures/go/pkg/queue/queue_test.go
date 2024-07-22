@@ -34,7 +34,7 @@ func TestIsEmpty(t *testing.T) {
 	}
 }
 
-func TestPush(t *testing.T) {
+func TestEnqueue(t *testing.T) {
 	tests := []struct {
 		desc      string
 		q         queue.Queue[int32]
@@ -57,7 +57,7 @@ func TestPush(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
-			tt.q.Push(tt.push)
+			tt.q.Enqueue(tt.push)
 			if tt.q.IsEmpty() {
 				t.Error("expected queue to not be empty")
 			}
@@ -91,7 +91,7 @@ func TestSize(t *testing.T) {
 	})
 }
 
-func TestPop(t *testing.T) {
+func TestDequeue(t *testing.T) {
 	tests := []struct {
 		desc    string
 		q       queue.Queue[string]
@@ -114,7 +114,7 @@ func TestPop(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
-			gotValue := tt.q.Pop()
+			gotValue := tt.q.Dequeue()
 			gotLength := tt.q.Size()
 
 			if gotValue != tt.exp {
@@ -127,7 +127,7 @@ func TestPop(t *testing.T) {
 	}
 }
 
-func TestFront(t *testing.T) {
+func TestPeek(t *testing.T) {
 	tests := []struct {
 		desc string
 		q    queue.Queue[int8]
@@ -150,7 +150,7 @@ func TestFront(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.desc, func(t *testing.T) {
-			got := tt.q.Front()
+			got := tt.q.Peek()
 
 			if tt.exp == nil {
 				if got != nil {
