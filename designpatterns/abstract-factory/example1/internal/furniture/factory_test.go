@@ -21,10 +21,10 @@ func Test_NewFurnitureFactory(t *testing.T) {
 			t.Errorf("expected %s but got %s", furniture.ModernFurnitureType, chair.TypeName())
 		}
 		if table.TypeName() != furniture.ModernFurnitureType {
-			t.Errorf("expected %s but got %s", furniture.ModernFurnitureType, chair.TypeName())
+			t.Errorf("expected %s but got %s", furniture.ModernFurnitureType, table.TypeName())
 		}
 		if sofa.TypeName() != furniture.ModernFurnitureType {
-			t.Errorf("expected %s but got %s", furniture.ModernFurnitureType, chair.TypeName())
+			t.Errorf("expected %s but got %s", furniture.ModernFurnitureType, sofa.TypeName())
 		}
 	})
 
@@ -43,10 +43,10 @@ func Test_NewFurnitureFactory(t *testing.T) {
 			t.Errorf("expected %s but got %s", furniture.VictorianFurnitureType, chair.TypeName())
 		}
 		if table.TypeName() != furniture.VictorianFurnitureType {
-			t.Errorf("expected %s but got %s", furniture.VictorianFurnitureType, chair.TypeName())
+			t.Errorf("expected %s but got %s", furniture.VictorianFurnitureType, table.TypeName())
 		}
 		if sofa.TypeName() != furniture.VictorianFurnitureType {
-			t.Errorf("expected %s but got %s", furniture.VictorianFurnitureType, chair.TypeName())
+			t.Errorf("expected %s but got %s", furniture.VictorianFurnitureType, sofa.TypeName())
 		}
 	})
 
