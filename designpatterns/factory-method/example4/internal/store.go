@@ -1,5 +1,8 @@
 package internal
 
+// PizzaStore is used to invoke the correct factory, since
+//
+//	golang have no inheritance we need to implement it like this
 type PizzaStore struct{}
 
 func NewPizzaStore() PizzaStore {

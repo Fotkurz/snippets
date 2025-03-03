@@ -1,5 +1,6 @@
 package internal
 
+// Pizza declares the interface for the concrete objects
 type Pizza interface {
 	Serve() string
 }

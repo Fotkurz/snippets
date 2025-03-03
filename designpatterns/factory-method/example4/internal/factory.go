@@ -2,10 +2,15 @@ package internal
 
 import "math/rand"
 
+// The factory only declares the interface
+//
+//	a impl needs to be considered a PizzaFactory
+//	the creation logic for pizza are inside the factories
 type PizzaFactory interface {
 	Prepare() Pizza
 }
 
+// Random PizzaFactory impl
 type RandomFactory struct{}
 
 func NewRandomPizzaFactory() PizzaFactory {
@@ -21,6 +26,7 @@ func (rf RandomFactory) Prepare() Pizza {
 
 }
 
+// Pepperoni Pizza Factory impl
 type PepperoniPizzaFactory struct{}
 
 func NewPepperoniFactory() PizzaFactory {
@@ -31,6 +37,7 @@ func (ppf PepperoniPizzaFactory) Prepare() Pizza {
 	return PepperoniPizza{}
 }
 
+// Cheese pizza factory impl
 type CheesePizzaFactory struct{}
 
 func NewCheeseFactory() PizzaFactory {
