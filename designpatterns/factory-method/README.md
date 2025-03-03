@@ -9,6 +9,7 @@ As examples in this folder we have:
 - Dialog button -> Java;
 - Pizza Store (Simple Factory) -> Java;
 - BurgerRestaurant -> Java;
+- Pizza Store (Simple Factory) -> Golang;
 
 ## Simple Factory
 
