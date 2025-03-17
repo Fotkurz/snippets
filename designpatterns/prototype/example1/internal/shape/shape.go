@@ -1,8 +1,11 @@
 package shape
 
+import "math"
+
 type Shape interface {
 	Clone() Shape
 	Equals(s Shape) bool
+	Area() float64
 }
 
 type Rectangle struct {
@@ -49,6 +52,10 @@ func (r *Rectangle) Clone() Shape {
 	return newR
 }
 
+func (r *Rectangle) Area() float64 {
+	return float64(r.width * r.height)
+}
+
 type Circle struct {
 	radius int
 }
@@ -82,4 +89,8 @@ func (r *Circle) Equals(s Shape) bool {
 	}
 
 	return true
+}
+
+func (r *Circle) Area() float64 {
+	return math.Pi * math.Pow(float64((r.radius)), 2)
 }

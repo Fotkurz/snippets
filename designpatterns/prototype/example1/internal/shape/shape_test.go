@@ -19,6 +19,16 @@ func Test_Rectangle_Clone(t *testing.T) {
 	}
 }
 
+func Test_Rectangle_Area(t *testing.T) {
+	rect := shape.NewRectangle(10, 10)
+	got := rect.Area()
+	var want float64 = 100
+
+	if got != want {
+		t.Errorf("Expected %v, but got %v", want, got)
+	}
+}
+
 func Test_Circle_Clone(t *testing.T) {
 	first := shape.NewCircle(10)
 
@@ -30,5 +40,15 @@ func Test_Circle_Clone(t *testing.T) {
 
 	if !first.Equals(second) {
 		t.Errorf("Object is not a clone")
+	}
+}
+
+func Test_Circle_Area(t *testing.T) {
+	circle := shape.NewCircle(10)
+	got := circle.Area()
+	var want float64 = 314.1592653589793
+
+	if got != want {
+		t.Errorf("Expected %v, but got %v", want, got)
 	}
 }
