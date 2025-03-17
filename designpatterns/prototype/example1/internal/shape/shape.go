@@ -9,11 +9,10 @@ type Shape interface {
 }
 
 type Rectangle struct {
-	width  int
-	height int
+	width, height float64
 }
 
-func NewRectangle(width, height int) Shape {
+func NewRectangle(width, height float64) Shape {
 	return &Rectangle{
 		width:  width,
 		height: height,
@@ -53,14 +52,14 @@ func (r *Rectangle) Clone() Shape {
 }
 
 func (r *Rectangle) Area() float64 {
-	return float64(r.width * r.height)
+	return r.width * r.height
 }
 
 type Circle struct {
-	radius int
+	radius float64
 }
 
-func NewCircle(radius int) Shape {
+func NewCircle(radius float64) Shape {
 	return &Circle{
 		radius: radius,
 	}
@@ -92,5 +91,5 @@ func (r *Circle) Equals(s Shape) bool {
 }
 
 func (r *Circle) Area() float64 {
-	return math.Pi * math.Pow(float64((r.radius)), 2)
+	return math.Pi * math.Pow(r.radius, 2)
 }
