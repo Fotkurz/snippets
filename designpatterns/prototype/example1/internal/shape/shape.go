@@ -17,6 +17,13 @@ func NewRectangle(width, height int) Shape {
 	}
 }
 
+func newRectangleFrom(rect Rectangle) Shape {
+	return &Rectangle{
+		width:  rect.width,
+		height: rect.height,
+	}
+}
+
 func (r *Rectangle) Equals(s Shape) bool {
 	v, ok := s.(*Rectangle)
 	if !ok {
@@ -36,13 +43,10 @@ func (r *Rectangle) Equals(s Shape) bool {
 // Clone implements Shape.
 func (r *Rectangle) Clone() Shape {
 	// clone is able to use private
-	//	object fields to generate a new one
-	newR := Rectangle{
-		width:  r.width,
-		height: r.height,
-	}
+	//	object fields to generate a new one since its on the same pkg
+	newR := newRectangleFrom(*r)
 
-	return &newR
+	return newR
 }
 
 type Circle struct {
@@ -55,9 +59,14 @@ func NewCircle(radius int) Shape {
 	}
 }
 
-// Clone implements Shape.
+func newCircleFrom(circle Circle) Shape {
+	return &Circle{
+		radius: circle.radius,
+	}
+}
+
 func (c *Circle) Clone() Shape {
-	newC := &Circle{radius: c.radius}
+	newC := newCircleFrom(*c)
 
 	return newC
 }
