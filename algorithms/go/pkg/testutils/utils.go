@@ -7,3 +7,9 @@ func AssertEqual(t *testing.T, want, got interface{}) {
 		t.Errorf("expected=(%d), got=(%d)", want, got)
 	}
 }
+
+func AssertNil(t *testing.T, v interface{}) {
+	if v != nil {
+		t.Errorf("expected nil but got=%v", v)
+	}
+}
